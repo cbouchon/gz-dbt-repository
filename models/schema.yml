@@ -1,0 +1,17 @@
+version: 2
+sources:
+  - name: raw
+    database: handy-reference-479015-v7
+    schema: "{{ target.schema }}"
+    loader: bigquery
+    description: data base gz_raw_data
+    tables:
+      - name: sales
+        identifier: raw_gz_sales
+        description: details sales about gz_raw_data
+      - name: product
+        identifier: raw_gz_product
+        description: details product about gz_raw_data        
+      - name: ship
+        identifier: raw_gz_ship
+        description: details ship about gz_raw_data
