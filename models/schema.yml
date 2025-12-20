@@ -2,7 +2,7 @@ version: 2
 sources:
   - name: raw
     database: handy-reference-479015-v7
-    schema: "{{ target.schema }}"
+    schema: gz_raw_data
     loader: bigquery
     description: data base gz_raw_data
     tables:
