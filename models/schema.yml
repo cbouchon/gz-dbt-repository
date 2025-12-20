@@ -20,7 +20,7 @@ sources:
              description: the amount paid by the customer to purchase the product. revenue = quantity * selling_price
            - name: quantity
              description: the quantity of products purchased for a given order
-         tests:
+        tests:
            - unique:
                column_name: "(orders_id || '-' || pdt_id)"
       - name: product
