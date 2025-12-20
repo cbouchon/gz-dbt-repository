@@ -26,8 +26,8 @@ sales_margin AS (
         p.purchase_price,
 
         --metrics--
-        p.purchase_price * s.quantity AS purchase_cost,
-        s.revenue - (p.purchase_price * s.quantity) AS margin
+        ROUND(p.purchase_price * s.quantity) AS purchase_cost,
+        ROUND(s.revenue - (p.purchase_price * s.quantity)) AS margin
 
     FROM sales s
     LEFT JOIN products p
