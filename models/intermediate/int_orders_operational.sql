@@ -13,3 +13,4 @@
  LEFT JOIN {{ref("stg_raw__ship")}} s
      USING(orders_id)
  ORDER BY orders_id desc
+ 
