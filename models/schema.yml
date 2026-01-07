@@ -2,16 +2,36 @@ version: 2
 sources:
   - name: raw
     database: handy-reference-479015-v7
-    schema: "{{ target.schema }}"
+    schema: gz_raw_data
     loader: bigquery
     description: data base gz_raw_data
     tables:
       - name: sales
         identifier: raw_gz_sales
-        description: details sales about gz_raw_data
+        description: details orders and products sold daily about gz_raw_data
+        columns:
+           - name: date_date
+             description: date of purchase
+           - name: orders_id
+             description: foreign key to ship
+           - name: pdt_id
+             description: foreign key to product
+           - name: revenue
+             description: the amount paid by the customer to purchase the product. revenue = quantity * selling_price
+           - name: quantity
+             description: the quantity of products purchased for a given order
+        tests:
+           - unique:
+               column_name: "(orders_id || '-' || pdt_id)"
       - name: product
         identifier: raw_gz_product
-        description: details product about gz_raw_data        
+        description: details products' purchase price about gz_raw_data 
+        columns:
+          - name: products_id
+            tests: [unique, not_null]       
       - name: ship
         identifier: raw_gz_ship
-        description: details ship about gz_raw_data
+        description: details shipping fees and costs per order about gz_raw_data
+        columns:
+          - name: orders_id
+            tests: [unique, not_null]
